@@ -1,13 +1,19 @@
+import { AppContainer } from "react-hot-loader";
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import router from "../router/index";
-import Header from "./Header";
-import HomePage from "../pages/HomePage";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Provider } from "react-redux";
+import { ConnectedRouter } from "connected-react-router";
+import { history, store } from "../configureStore";
+import routes from "../routes";
 
 class App extends Component {
   render() {
-    return <HomePage />;
+    return (
+      <AppContainer>
+        <Provider store={store}>
+          <ConnectedRouter history={history}>{routes}</ConnectedRouter>
+        </Provider>
+      </AppContainer>
+    );
   }
 }
 
