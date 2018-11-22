@@ -6,9 +6,11 @@ class HabitsListComponent extends Component {
   render() {
     const { habitsList } = this.props;
 
-    return habitsList.map(habitItem => {
-      <HabitItemContainer habitItem={habitItem} />;
+    const habitItems = habitsList.map(habitItem => {
+      return <HabitItemContainer key={habitItem.id} habitItem={habitItem} />;
     });
+
+    return <div>{habitItems}</div>;
   }
 }
 

@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 class HabitsItemComponent extends Component {
   render() {
-    return <div>Item</div>;
+    const { habitItem } = this.props;
+
+    return <div>{habitItem.title}</div>;
   }
 }
 

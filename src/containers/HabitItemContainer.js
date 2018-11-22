@@ -5,7 +5,9 @@ import HabitItemComponent from "../components/HabitItemComponent";
 
 class HabitItemContainer extends Component {
   render() {
-    return <HabitItemComponent />;
+    const { habitItem } = this.props;
+
+    return <HabitItemComponent habitItem={habitItem} />;
   }
 }
 
