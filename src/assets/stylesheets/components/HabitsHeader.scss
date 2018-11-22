@@ -1,3 +1,11 @@
 .habits-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  font-size: 25px;
+  margin: 0 auto;
+  padding: 1rem 5rem;
+  min-height: 5rem;
+  background-color: pink;
 }

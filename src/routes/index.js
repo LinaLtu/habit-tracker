@@ -8,7 +8,6 @@ const routes = (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/habits" component={HabitsPage} />
-      {/* <Route component={NoMatch} /> */}
     </Switch>
   </div>
 );
