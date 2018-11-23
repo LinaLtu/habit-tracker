@@ -1,0 +1,17 @@
+.habits-list-header {
+  display: flex;
+  width: 80%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem 5rem;
+  text-align: center;
+  background-color: $mainBackground;
+
+  &__title {
+    width: 50%;
+  }
+
+  &__day-box {
+    width: 10%;
+  }
+}
