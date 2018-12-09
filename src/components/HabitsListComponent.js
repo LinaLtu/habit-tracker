@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import HabitItemContainer from "../containers/HabitItemContainer";
-import HabitsListHeader from "./HabitsListHeader";
-import { getDaysArray } from "../helpers/dates";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import HabitItemContainer from '../containers/HabitItemContainer';
+import HabitsListHeader from './HabitsListHeader';
+import { getDaysArray } from '../helpers/dates';
 
 class HabitsListComponent extends Component {
   render() {

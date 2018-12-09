@@ -1,7 +1,7 @@
-import React from "react";
-import Logo from "../components/Logo";
-import EnterButtonContainer from "../containers/EnterButtonContainer";
-import HomeHeaderContainer from "../containers/HomeHeaderContainer";
+import React from 'react';
+import Logo from '../components/Logo';
+import EnterButtonContainer from '../containers/EnterButtonContainer';
+import HomeHeaderContainer from '../containers/HomeHeaderContainer';
 
 const HomePage = () => {
   return (

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import HabitItemComponent from "../components/HabitItemComponent";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import HabitItemComponent from '../components/HabitItemComponent';
 
 class HabitItemContainer extends Component {
   render() {

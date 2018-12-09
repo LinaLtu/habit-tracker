@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-const CSS_NS = "habits";
+const CSS_NS = 'habits';
 
 class HabitsListHeader extends Component {
   render() {
@@ -10,7 +10,7 @@ class HabitsListHeader extends Component {
     const daysBoxes = daysArray.map(day => {
       return (
         <div key={day.format()} className={`${CSS_NS}__day-box`}>
-          {day.format("ddd DD MMM")}
+          {day.format('ddd DD MMM')}
         </div>
       );
     });

@@ -1,8 +1,8 @@
-import moment from "moment";
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import moment from 'moment';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-const CSS_NS = "habits";
+const CSS_NS = 'habits';
 
 class HabitsItemComponent extends Component {
   getSymbol(planning, progress, day) {
@@ -11,22 +11,22 @@ class HabitsItemComponent extends Component {
     const isPlanned = planning[dayOfTheWeek] === true;
 
     if (!isPlanned) {
-      return "-";
+      return '-';
     }
 
-    if (progress[day.format("YYYY-MM-DD")] === true) {
-      return "v";
+    if (progress[day.format('YYYY-MM-DD')] === true) {
+      return 'v';
     }
 
     // To use moment comparison, we must ensure the two moment instances have
     // the same time, so that the are the "same" exactly when the day coincide
     // Alternative:
     // if (day.format('YYYY-MM-DD') >= moment().format('YYYY-MM-DD')) {}
-    if (day.startOf("day").isSameOrAfter(moment().startOf("day"))) {
-      return "fut";
+    if (day.startOf('day').isSameOrAfter(moment().startOf('day'))) {
+      return 'fut';
     }
 
-    return "pas";
+    return 'pas';
   }
 
   render() {

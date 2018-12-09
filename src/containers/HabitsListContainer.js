@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import uuid from "uuid/v4";
-import HabitsListComponent from "../components/HabitsListComponent";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import uuid from 'uuid/v4';
+import HabitsListComponent from '../components/HabitsListComponent';
 
 class HabitsListContaner extends Component {
   render() {
@@ -17,7 +17,7 @@ const initialState = {
   items: [
     {
       id: uuid(),
-      title: "Read books",
+      title: 'Read books',
       planning: {
         1: false,
         2: true,
@@ -28,8 +28,8 @@ const initialState = {
         7: false
       },
       progress: {
-        "2018-12-02": true,
-        "2018-12-08": true
+        '2018-12-02': true,
+        '2018-12-08': true
       }
     }
   ]
