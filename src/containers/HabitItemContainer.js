@@ -5,9 +5,9 @@ import HabitItemComponent from "../components/HabitItemComponent";
 
 class HabitItemContainer extends Component {
   render() {
-    const { habitItem } = this.props;
+    const { habitItem, daysArray } = this.props;
 
-    return <HabitItemComponent habitItem={habitItem} />;
+    return <HabitItemComponent habitItem={habitItem} daysArray={daysArray} />;
   }
 }
 
@@ -16,7 +16,21 @@ const mapStateToProps = () => {
 };
 
 HabitItemContainer.propTypes = {
-  habitItem: PropTypes.object
+  habitItem: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    planning: PropTypes.shape({
+      1: PropTypes.bool.isRequired,
+      2: PropTypes.bool.isRequired,
+      3: PropTypes.bool.isRequired,
+      4: PropTypes.bool.isRequired,
+      5: PropTypes.bool.isRequired,
+      6: PropTypes.bool.isRequired,
+      7: PropTypes.bool.isRequired
+    }),
+    progress: PropTypes.objectOf(PropTypes.string)
+  }),
+  daysArray: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps)(HabitItemContainer);

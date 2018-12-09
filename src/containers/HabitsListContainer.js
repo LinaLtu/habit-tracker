@@ -19,7 +19,7 @@ const initialState = {
       id: uuid(),
       title: "Read books",
       planning: {
-        1: true,
+        1: false,
         2: true,
         3: true,
         4: false,
@@ -27,7 +27,10 @@ const initialState = {
         6: true,
         7: false
       },
-      progress: {}
+      progress: {
+        "2018-12-02": true,
+        "2018-12-08": true
+      }
     }
   ]
 };
