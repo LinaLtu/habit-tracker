@@ -5,9 +5,10 @@ import HabitsListComponent from '../components/HabitsListComponent';
 
 class HabitsListContaner extends Component {
   render() {
+
     const { items } = this.props;
 
-    return <HabitsListComponent habitsList={items} />;
+    return <HabitsListComponent habitsList={items}/>;
   }
 }
 

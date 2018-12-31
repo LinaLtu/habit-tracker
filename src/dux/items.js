@@ -1,12 +1,17 @@
 import uuid from 'uuid/v4';
 
 export const MARK_AS_DONE = 'MARK_AS_DONE';
-export function maskAsDone({id, dayString}) {
+
+export const markAsDone = ({id, dayString}) => (dispatch, getState) => {
+  // const store = getState();
+  console.log('calling markAsDone!!!');
+
   return {
     type: MARK_AS_DONE,
     payload: {id, dayString}
   };
-}
+};
+
 
 const initialState = {
   items: [

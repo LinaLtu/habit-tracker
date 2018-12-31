@@ -2,17 +2,28 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import HabitItemComponent from '../components/HabitItemComponent';
+import { markAsDone } from '../dux/items'
 
 class HabitItemContainer extends Component {
   render() {
-    const { habitItem, daysArray } = this.props;
+    const { habitItem, daysArray, markAsDoneHandleClick } = this.props;
 
-    return <HabitItemComponent habitItem={habitItem} daysArray={daysArray} />;
+    return <HabitItemComponent
+      habitItem={habitItem}
+      daysArray={daysArray}
+      markAsDoneHandleClick={markAsDoneHandleClick}
+    />;
   }
 }
 
 const mapStateToProps = () => {
   return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    markAsDoneHandleClick: markAsDone
+  };
 };
 
 HabitItemContainer.propTypes = {
@@ -30,7 +41,8 @@ HabitItemContainer.propTypes = {
     }),
     progress: PropTypes.objectOf(PropTypes.bool)
   }),
-  daysArray: PropTypes.array.isRequired
+  daysArray: PropTypes.array.isRequired,
+  markAsDoneHandleClick: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(HabitItemContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HabitItemContainer);
