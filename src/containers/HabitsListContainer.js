@@ -12,7 +12,6 @@ class HabitsListContaner extends Component {
 }
 
 const mapStateToProps = (store) => {
-  console.log('store ', store)
 
   return {
     items: store.items

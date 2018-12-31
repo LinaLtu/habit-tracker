@@ -5,6 +5,6 @@ import itemsReducer from '../dux/items';
 export default history =>
   combineReducers({
     router: connectRouter(history),
-    ...itemsReducer
+    items: itemsReducer
     // Other reducers
   });
