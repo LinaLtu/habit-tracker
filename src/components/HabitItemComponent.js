@@ -79,7 +79,7 @@ HabitsItemComponent.propTypes = {
       6: PropTypes.bool.isRequired,
       7: PropTypes.bool.isRequired
     }),
-    progress: PropTypes.objectOf(PropTypes.string)
+    progress: PropTypes.objectOf(PropTypes.bool)
   }),
   daysArray: PropTypes.array.isRequired
 };
