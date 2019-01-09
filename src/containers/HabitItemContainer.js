@@ -22,7 +22,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    markAsDoneHandleClick: markAsDone
+    markAsDoneHandleClick: (id, dayString) => dispatch(markAsDone({ id, dayString }))
   };
 };
 

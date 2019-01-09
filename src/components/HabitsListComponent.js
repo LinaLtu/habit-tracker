@@ -9,8 +9,6 @@ class HabitsListComponent extends Component {
     const { habitsList } = this.props;
     const daysArray = getDaysArray();
 
-    console.log('props ', this.props)
-
     const habitItems = habitsList.items.map(habitItem => {
       return (
         <HabitItemContainer

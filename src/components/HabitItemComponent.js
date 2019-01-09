@@ -48,11 +48,15 @@ class HabitsItemComponent extends Component {
 
   render() {
     const { habitItem, daysArray, markAsDoneHandleClick } = this.props;
-    console.log('props ',this.props )
 
     const daysNodes = daysArray.map(day => {
       return (
-        <div key={day.format()} className={`${CSS_NS}__day-box`} onClick={markAsDoneHandleClick}>
+        <div key={day.format()}
+             className={`${CSS_NS}__day-box`}
+             onClick={() => markAsDoneHandleClick(
+               habitItem.id,
+               day.format('YYYY-MM-DD')
+             )}>
           {this.getSymbol(habitItem.planning, habitItem.progress, day)}
         </div>
       );

@@ -2,10 +2,7 @@ import uuid from 'uuid/v4';
 
 export const MARK_AS_DONE = 'MARK_AS_DONE';
 
-export const markAsDone = ({id, dayString}) => (dispatch, getState) => {
-  // const store = getState();
-  console.log('calling markAsDone!!!');
-
+export const markAsDone = ({id, dayString}) => {
   return {
     type: MARK_AS_DONE,
     payload: {id, dayString}
@@ -38,9 +35,11 @@ const initialState = {
 export default function itemsReducer(state = initialState, action) {
   switch (action.type) {
     case MARK_AS_DONE: {
-      let index = state.items.findIndex(stateItem => { return stateItem.id === action.payload.id });
+      let index = state.items.findIndex(stateItem => {
+        return stateItem.id === action.payload.id
+      });
 
-      if (!index) {
+      if (index === -1) {
         return state;
       }
 
