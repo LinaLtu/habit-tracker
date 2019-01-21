@@ -1,3 +1,4 @@
+import moment from 'moment';
 import uuid from 'uuid/v4';
 
 export const MARK_AS_DONE = 'MARK_AS_DONE';
@@ -32,6 +33,11 @@ const initialState = {
   ]
 };
 
+function isItemPlanned(item, dayString) {
+  const weekday = moment(dayString).isoWeekday();
+  return item.planning[weekday];
+}
+
 export default function itemsReducer(state = initialState, action) {
   switch (action.type) {
     case MARK_AS_DONE: {
@@ -44,7 +50,14 @@ export default function itemsReducer(state = initialState, action) {
       }
 
       const newState = { ...state };
-      newState.items[index].progress[action.payload.dayString] = true;
+      const selectedItem = newState.items[index];
+
+      if (!isItemPlanned(selectedItem, action.payload.dayString)) {
+        return state;
+      }
+
+      let itemProgress = selectedItem.progress;
+      itemProgress[action.payload.dayString] = true;
 
       return Object.assign({}, state, newState);
     }
