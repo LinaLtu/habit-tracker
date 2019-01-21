@@ -10,7 +10,6 @@ export const markAsDone = ({id, dayString}) => {
   };
 };
 
-
 const initialState = {
   items: [
     {
