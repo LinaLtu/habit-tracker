@@ -2,6 +2,8 @@ import moment from 'moment';
 import uuid from 'uuid/v4';
 
 export const MARK_AS_DONE = 'MARK_AS_DONE';
+export const ADD_NEW_ITEM = 'ADD_NEW_ITEM';
+// export const MODAL_OPEN = 'MODAL_OPEN';
 
 export const markAsDone = ({id, dayString}) => {
   return {
@@ -10,7 +12,21 @@ export const markAsDone = ({id, dayString}) => {
   };
 };
 
-const initialState = {
+export const addNewItem = ({ title, planning }) => {
+  return {
+    type: ADD_NEW_ITEM,
+    payload: { title, planning }
+  };
+};
+
+// export const modalOpen = (isModalOpen) => {
+//   return {
+//     type: MODAL_OPEN,
+//     payload: isModalOpen
+//   }
+// }
+
+export const initialState = {
   items: [
     {
       id: uuid(),
@@ -38,6 +54,8 @@ function isItemPlanned(item, dayString) {
 }
 
 export default function itemsReducer(state = initialState, action) {
+  console.log(`Received action ${action.type}`, action)
+
   switch (action.type) {
     case MARK_AS_DONE: {
       let index = state.items.findIndex(stateItem => {
@@ -60,6 +78,30 @@ export default function itemsReducer(state = initialState, action) {
 
       return Object.assign({}, state, newState);
     }
+    case ADD_NEW_ITEM: {
+      // TODO Add validation!
+
+      // Add new item to the item list
+      const newState = { ...state };
+
+      // const newHabit = action.payload;
+      // newHabit.id = uuid();
+      // Same as following, but with Spread operator:
+      const newHabit = {
+        id: uuid(),
+        ...action.payload,
+        progress: {}
+      }
+
+      newState.items.push(newHabit);
+
+      console.log('This is our action', action, newState)
+      return Object.assign({}, state, newState);
+    }
+    //     case MODAL_OPEN: {
+    //       console.log('Modal open', action.payload)
+    //       return Object.assign({}, state, { isModalOpen: action.payload });
+    //     }
     default:
       return state;
   }

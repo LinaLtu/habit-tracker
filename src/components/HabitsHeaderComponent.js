@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CreateHabitContainer from '../containers/CreateHabitContainer';
+import HabitModalContainer from '../containers/HabitModalContainer';
 
 class HabitsHeaderComponent extends Component {
   render() {
@@ -9,7 +9,7 @@ class HabitsHeaderComponent extends Component {
     return (
       <div className="habits-header">
         <div className="habits-title">{title}</div>
-        <div><CreateHabitContainer /></div>
+        <div><HabitModalContainer /></div>
       </div>
     );
   }

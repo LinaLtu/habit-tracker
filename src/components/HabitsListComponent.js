@@ -28,8 +28,28 @@ class HabitsListComponent extends Component {
   }
 }
 
-HabitsListComponent.propTypes = {
-  habitsList: PropTypes.array.isRequired
-};
+//Failed prop type: checker is not a function
+
+// HabitsListComponent.propTypes = {
+//   habitsList: PropTypes.shape([
+//     {
+//       id: PropTypes.string,
+//       title: PropTypes.string,
+//       planning: PropTypes.shape({
+//         1: PropTypes.bool,
+//         2: PropTypes.bool,
+//         3: PropTypes.bool,
+//         4: PropTypes.bool,
+//         5: PropTypes.bool,
+//         6: PropTypes.bool,
+//         7: PropTypes.bool
+//       }),
+//       progress: PropTypes.shape({
+//         '2018-12-02': PropTypes.bool,
+//         '2018-12-08': PropTypes.bool
+//       })
+//     }
+//   ])
+// };
 
 export default HabitsListComponent;
