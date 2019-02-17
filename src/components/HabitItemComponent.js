@@ -2,6 +2,7 @@ import moment from 'moment';
 import React, { Component } from 'react';
 import MaterialIcon from 'material-icons-react';
 import PropTypes from 'prop-types';
+import EditHabitModalContainer from '../containers/EditHabitModalContainer';
 
 const CSS_NS = 'habits';
 
@@ -58,12 +59,14 @@ class HabitsItemComponent extends Component {
                day.format('YYYY-MM-DD')
              )}>
           {this.getSymbol(habitItem.planning, habitItem.progress, day)}
+
         </div>
       );
     });
 
     return (
       <div className={CSS_NS}>
+        <EditHabitModalContainer habitItem={habitItem} />
         <div className={`${CSS_NS}__title`}>{habitItem.title}</div>
         {daysNodes}
       </div>
