@@ -3,7 +3,9 @@ import uuid from 'uuid/v4';
 
 export const MARK_AS_DONE = 'MARK_AS_DONE';
 export const ADD_NEW_ITEM = 'ADD_NEW_ITEM';
-// export const MODAL_OPEN = 'MODAL_OPEN';
+export const GET_ITEM = 'GET_ITEM';
+export const UPDATE_ITEM = 'UPDATE_ITEM';
+export const DELETE_ITEM = 'DELETE_ITEM';
 
 export const markAsDone = ({id, dayString}) => {
   return {
@@ -19,12 +21,27 @@ export const addNewItem = ({ title, planning }) => {
   };
 };
 
-// export const modalOpen = (isModalOpen) => {
-//   return {
-//     type: MODAL_OPEN,
-//     payload: isModalOpen
-//   }
-// }
+export const getItem = (habitItem) => {
+  return {
+    type: GET_ITEM,
+    payload: habitItem
+  };
+};
+
+export const updateItem = ( habitItemId ) => {
+  return {
+    type: UPDATE_ITEM,
+    payload: habitItemId
+  }
+}
+
+export const deleteItem = ( habitItemId ) => {
+  return {
+    type: DELETE_ITEM,
+    payload: habitItemId
+  }
+}
+
 
 export const initialState = {
   items: [
@@ -49,8 +66,8 @@ export const initialState = {
 };
 
 function isItemPlanned(item, dayString) {
-  const weekday = moment(dayString).isoWeekday();
-  return item.planning[weekday];
+  const weekdayAsNumber = moment(dayString).isoWeekday();
+  return item.planning[weekdayAsNumber];
 }
 
 export default function itemsReducer(state = initialState, action) {
@@ -58,25 +75,24 @@ export default function itemsReducer(state = initialState, action) {
 
   switch (action.type) {
     case MARK_AS_DONE: {
-      let index = state.items.findIndex(stateItem => {
+      const clonedState = { ...state };
+
+      const item = clonedState.items.find(stateItem => {
         return stateItem.id === action.payload.id
       });
 
-      if (index === -1) {
+      if (!item) {
         return state;
       }
 
-      const newState = { ...state };
-      const selectedItem = newState.items[index];
-
-      if (!isItemPlanned(selectedItem, action.payload.dayString)) {
-        return state;
+      if(!isItemPlanned(item, action.payload.dayString)){
+        return state
       }
 
-      let itemProgress = selectedItem.progress;
-      itemProgress[action.payload.dayString] = true;
+      item.progress[action.payload.dayString] = true;
 
-      return Object.assign({}, state, newState);
+      return Object.assign({}, state, clonedState);
+
     }
     case ADD_NEW_ITEM: {
       // TODO Add validation!
@@ -98,10 +114,29 @@ export default function itemsReducer(state = initialState, action) {
       console.log('This is our action', action, newState)
       return Object.assign({}, state, newState);
     }
-    //     case MODAL_OPEN: {
-    //       console.log('Modal open', action.payload)
-    //       return Object.assign({}, state, { isModalOpen: action.payload });
-    //     }
+
+    case GET_ITEM: {
+      const index = state.items.findIndex(stateItem => {
+        return stateItem.id === action.payload.id
+      });
+
+      if (index === -1) {
+        return Object.assign({}, state);
+      }
+
+      return Object.assign({}, state, state.items[index]);
+    }
+
+    case DELETE_ITEM: {
+      const clonedState = { ...state};
+
+      clonedState.items = clonedState.items.filter(item => {
+        return !(item.id === action.payload);
+      });
+
+      return Object.assign({}, state, clonedState);
+    }
+
     default:
       return state;
   }

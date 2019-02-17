@@ -92,8 +92,11 @@ class EditHabitModalComponent extends Component {
     console.log('Saved')
   }
 
-  handleDeleteClick(e) {
-
+  handleDeleteClick(e, closePortal) {
+    const { deleteItem, habitItem } = this.props;
+    e.preventDefault();
+    deleteItem(habitItem);
+    closePortal(e);
   }
 
   render() {
